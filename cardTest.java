@@ -13,6 +13,8 @@ class CardTest {
 
     void createDeckTest() {
         Deck deck = new Deck();
-        System.out.println(deck.cards);
+        for (Card card : deck.cards) {
+            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
+        }
     }
 }

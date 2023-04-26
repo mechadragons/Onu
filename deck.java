@@ -7,8 +7,21 @@ class Deck {
         createDeck(cards);
     }
 
-    void createDeck(Stack<Card> cards) {
-        generateNumberCards(cards, "red");
+    private void createDeck(Stack<Card> cards) {
+        generateCards(cards, "red");
+        generateCards(cards, "yellow");
+        generateCards(cards, "blue");
+        generateCards(cards, "green");
+        generateWildCards(cards);
+    }
+
+    private void generateCards(Stack<Card> cards, String color) {
+        generateNumberCards(cards, color);
+        for (int i = 0; i < 2; i++) {
+            cards.push(new Card(color, "skip"));
+            cards.push(new Card(color, "reverse"));
+            cards.push(new Card(color, "drawTwo"));
+        }
     }
 
     private void generateNumberCards(Stack<Card> cards, String color) {
@@ -17,6 +30,13 @@ class Deck {
             if (symbol > 0) {
                 cards.push(new Card(color, Integer.toString(symbol)));
             }
+        }
+    }
+
+    private void generateWildCards(Stack<Card> cards) {
+        for (int i = 0; i < 5; i++) {
+            cards.push(new Card("wild", "wild"));
+            cards.push(new Card("wild", "drawFour"));
         }
     }
 }
