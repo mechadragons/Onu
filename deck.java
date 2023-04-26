@@ -1,10 +1,16 @@
 import java.util.Stack;
+import java.util.Collections;
 
 class Deck {
     Stack<Card> cards = new Stack<Card>(); //A stack of the cards in the deck
 
     public Deck() { //Constructor
         createDeck(); //Generates complete Uno deck
+        shuffleDeck(); //Shuffles Uno deck
+    }
+
+    void shuffleDeck() {
+        Collections.shuffle(cards);
     }
 
     private void createDeck() { //Generates complete Uno deck
