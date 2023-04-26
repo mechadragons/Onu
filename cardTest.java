@@ -2,8 +2,7 @@ class CardTest {
     public static void main(String args[]) {
         CardTest test = new CardTest();
         //test.createCard();
-        //test.createDeckTest();
-        Deck deck = new Deck();
+        //test.createDeckTest();;
     }
 
     void createCard() {
