@@ -2,7 +2,8 @@ class CardTest {
     public static void main(String args[]) {
         CardTest test = new CardTest();
         //test.createCard();
-        //test.createDeckTest();;
+        //test.createDeckTest();
+        test.drawHandTest();
     }
 
     void createCard() {
@@ -12,9 +13,22 @@ class CardTest {
     }
 
     void createDeckTest() {
-        Deck deck = new Deck();
+        Deck deck = Deck.getInstance();
         for (Card card : deck.cards) {
             System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
+        }
+    }
+
+    void drawHandTest() {
+        Deck deck = Deck.getInstance();
+        Hand hand = new Hand();
+        System.out.println("Hand:\n");
+        for (Card card : hand.cards) {
+            System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
+        }
+        System.out.println("--------------\nDeck:\n");
+        for (Card card : deck.cards) {
+            System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
         }
     }
 }
