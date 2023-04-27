@@ -23,10 +23,12 @@ class Discard {
     }
 
     void reshuffle() {
-        while (cards.size() > 1) {
+        cards.pop(); //The topCard is NOT the top card of the discard stack. But since said card is stored in topCard it can be added back in after being popped, without (incorrectly) shuffling it back into the deck.
+        while (!cards.isEmpty()) {
             deck.cards.push(cards.peek());
             cards.pop();
         }
+        cards.push(topCard);
         deck.shuffleDeck();
     }
 
