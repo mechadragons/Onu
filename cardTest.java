@@ -3,7 +3,8 @@ class CardTest {
         CardTest test = new CardTest();
         //test.createCard();
         //test.createDeckTest();
-        test.drawHandTest();
+        //test.drawHandTest();
+        //test.createDiscardTest();
     }
 
     void createCard() {
@@ -24,6 +25,19 @@ class CardTest {
         Hand hand = new Hand();
         System.out.println("Hand:\n");
         for (Card card : hand.cards) {
+            System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
+        }
+        System.out.println("--------------\nDeck:\n");
+        for (Card card : deck.cards) {
+            System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
+        }
+    }
+
+    void createDiscardTest() {
+        Deck deck = Deck.getInstance();
+        Discard discard = Discard.getInstance();
+        System.out.println("Discard:\n");
+        for (Card card : discard.cards) {
             System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
         }
         System.out.println("--------------\nDeck:\n");
