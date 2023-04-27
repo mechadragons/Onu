@@ -5,6 +5,7 @@ class CardTest {
         //test.createDeckTest();
         //test.drawHandTest();
         //test.createDiscardTest();
+        test.topCardTest();
     }
 
     void createCard() {
@@ -25,11 +26,11 @@ class CardTest {
         Hand hand = new Hand();
         System.out.println("Hand:\n");
         for (Card card : hand.cards) {
-            System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
+            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
         }
         System.out.println("--------------\nDeck:\n");
         for (Card card : deck.cards) {
-            System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
+            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
         }
     }
 
@@ -38,11 +39,20 @@ class CardTest {
         Discard discard = Discard.getInstance();
         System.out.println("Discard:\n");
         for (Card card : discard.cards) {
-            System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
+            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
         }
         System.out.println("--------------\nDeck:\n");
         for (Card card : deck.cards) {
-            System.out.println ("Card color: " + card.color + " // Card symbol: " + card.symbol);
+            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
         }
+    }
+
+    void topCardTest() {
+        Discard discard = Discard.getInstance();
+        for (Card card : discard.cards) {
+            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
+        }
+        System.out.println("\nCard color: " + discard.topCard.color + " // Card symbol: " + discard.topCard.symbol);
+        System.out.println("\nThe above two lines should be the same");
     }
 }
