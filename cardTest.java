@@ -1,6 +1,6 @@
 class CardTest {
     public static void main(String args[]) {
-        CardTest test = new CardTest();
+        //CardTest test = new CardTest();
         //test.createCard();
         //test.createDeckTest();
         //test.drawHandTest();
@@ -8,7 +8,7 @@ class CardTest {
         //test.topCardTest();
         //test.playCardTest();
         //test.drawTest();
-        test.reshuffleTest();
+        //test.reshuffleTest();
     }
 
     void createCard() {

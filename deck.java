@@ -10,7 +10,7 @@ class Deck { //Deck class is a SINGLETON! Use getInstance method to create and a
         shuffleDeck(); //Shuffles Uno deck
     }
 
-    public static Deck getInstance() {
+    public static Deck getInstance() { //Returns a deck
         if (instance == null) {
             instance = new Deck();
         }
