@@ -10,6 +10,9 @@ class Hand {
     }
 
     void draw() {
+        if (deck.cards.isEmpty()) {
+            discard.reshuffle();
+        }
         cards.add(deck.cards.peek());
         deck.cards.pop();
     }

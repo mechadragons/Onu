@@ -69,4 +69,7 @@ class CardTest {
         System.out.println("--------------");
         hand.playCard(0);
     }
+
+    void reshuffleTest() {
+    }
 }

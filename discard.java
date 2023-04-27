@@ -22,6 +22,14 @@ class Discard {
         cards.push(card);
     }
 
+    void reshuffle() {
+        while (cards.size() > 1) {
+            deck.cards.push(cards.peek());
+            cards.pop();
+        }
+        deck.shuffleDeck();
+    }
+
     private void drawStartingCard() {
         while (deck.cards.peek().color == "wild") {
             deck.shuffleDeck();
