@@ -1,11 +1,12 @@
 class CardTest {
     public static void main(String args[]) {
-        CardTest test = new CardTest();
+        //CardTest test = new CardTest();
         //test.createCard();
         //test.createDeckTest();
         //test.drawHandTest();
         //test.createDiscardTest();
-        test.topCardTest();
+        //test.topCardTest();
+        //test.playCardTest();
     }
 
     void createCard() {
@@ -54,5 +55,18 @@ class CardTest {
         }
         System.out.println("\nCard color: " + discard.topCard.color + " // Card symbol: " + discard.topCard.symbol);
         System.out.println("\nThe above two lines should be the same");
+    }
+
+    void playCardTest() {
+        Hand hand = new Hand();
+        Discard discard = Discard.getInstance();
+        System.out.println("Hand:\n");
+        for (Card card : hand.cards) {
+            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
+        }
+        System.out.println("Top card: ");
+        System.out.println("Card color: " + discard.topCard.color + " // Card symbol: " + discard.topCard.symbol);
+        System.out.println("--------------");
+        hand.playCard(0);
     }
 }

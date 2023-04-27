@@ -17,12 +17,16 @@ class Discard {
         return instance;
     }
 
+    void addCard(Card card) {
+        topCard = card;
+        cards.push(card);
+    }
+
     private void drawStartingCard() {
         while (deck.cards.peek().color == "wild") {
             deck.shuffleDeck();
         }
-        topCard = deck.cards.peek();
-        cards.push(deck.cards.peek());
+        addCard(deck.cards.peek());
         deck.cards.pop();
     }
 }
