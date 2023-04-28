@@ -1,6 +1,10 @@
+import java.lang.Math;
+
 class Coordinates {
     int x = -1;
     int y = -1;
+    final double WIDTH = 85.55;
+    final double HEIGHT = 133.6;
 
     public Coordinates(Card card) {
         if (card.symbol == "skip") {
@@ -59,45 +63,28 @@ class Coordinates {
                     y = 0;
                     break;
                 case "yellow":
-                    y = 133;
+                    y = gety(1);
                     break;
                 case "green":
-                    y = 266;
+                    y = gety(2);
                     break;
                 case "blue":
-                    y = 399;
+                    y = gety(3);
             }
-            switch (card.symbol) {
-                case "1":
-                    x = 0;
-                    break;
-                case "2":
-                    x = 85;
-                    break;
-                case "3":
-                    x = 170;
-                    break;
-                case "4":
-                    x = 255;
-                    break;
-                case "5":
-                    x = 340;
-                    break;
-                case "6":
-                    x = 425;
-                    break;
-                case "7":
-                    x = 510;
-                    break;
-                case "8":
-                    x = 595;
-                    break;
-                case "9":
-                    x = 680;
-                    break;
-                case "0":
-                    x = 765;    
-            }
+
+            x = getx(card.symbol);
         }
+    }
+
+    private int gety(int colorInt) {
+        return (int) Math.round(HEIGHT * colorInt);
+    }
+
+    private int getx(String symbol) {
+        int symbolInt = Integer.parseInt(symbol);
+        if (symbolInt == 0) {
+            return (int) Math.round(WIDTH * 9);
+        }
+        return (int) Math.round(WIDTH * (symbolInt - 1));
     }
 }
