@@ -9,7 +9,7 @@ class CardTest {
         //test.playCardTest();
         //test.drawTest();
         //test.reshuffleTest();
-        test.GUITest();
+        //test.GUITest();
     }
 
     void createCard() {

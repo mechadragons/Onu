@@ -7,7 +7,16 @@ class Coordinates {
     final double HEIGHT = 133.6;
 
     public Coordinates(Card card) {
-        if (card.symbol == "skip") {
+        if (card.color == "wild") {
+            y = 668;
+            if (card.symbol == "wild") {
+                x = 171;
+            }
+            else {
+                x = 342;
+            }
+        }
+        else if (card.symbol == "skip") {
             y = 532;
             switch (card.color) {
                 case "red":
@@ -23,14 +32,14 @@ class Coordinates {
                     x = 770;
             }
         }
-        else if (card.symbol == "reverse" || card.symbol == "plusTwo") {
+        else if (card.symbol == "reverse" || card.symbol == "drawTwo") {
             if (card.color == "blue") {
                 y = 668;
                 switch (card.symbol) {
                     case "reverse":
                         x = 0;
                         break;
-                    case "plusTwo":
+                    case "drawTwo":
                         x = 86;
                 }
             }
@@ -42,7 +51,7 @@ class Coordinates {
                             case "reverse":
                                 x = 86;
                                 break;
-                            case "plusTwo":
+                            case "drawTwo":
                                 x = 171;
                         }
                         break;
@@ -50,7 +59,7 @@ class Coordinates {
                         switch (card.symbol) {
                             case "reverse":
                                 x = 342;
-                            case "plusTwo":
+                            case "drawTwo":
                                 x = 428;
                         }
                     case "green":
@@ -58,7 +67,7 @@ class Coordinates {
                             case "reverse":
                                 x = 599;
                                 break;
-                            case "plusTwo":
+                            case "drawTwo":
                                 x = 684;
                         }
                 }
