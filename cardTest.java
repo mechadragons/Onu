@@ -10,6 +10,7 @@ class CardTest {
         //test.drawTest();
         //test.reshuffleTest();
         //test.GUITest();
+        //test.handGenerationTest();
     }
 
     void createCard() {
@@ -123,5 +124,16 @@ class CardTest {
         Deck deck = Deck.getInstance();
         GUI GUI = new GUI();
         GUI.drawCard(deck.cards.peek());
+    }
+
+    void handGenerationTest() {
+        GameStart gameStart = new GameStart(3);
+        for (Hand hand : gameStart.hands) {
+            System.out.println("{");
+            for (Card card : hand.cards) {
+                System.out.print(card.color + " " + card.symbol + ", ");
+            }
+            System.out.print("}");
+        }
     }
 }
