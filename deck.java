@@ -1,15 +1,23 @@
 import java.util.Stack;
 import java.util.Collections;
 
-class Deck {
+class Deck { //Deck class is a SINGLETON! Use getInstance method to create and access
+    private static Deck instance;
     Stack<Card> cards = new Stack<Card>(); //A stack of the cards in the deck
 
-    public Deck() { //Constructor
+    private Deck() { //Constructor
         createDeck(); //Generates complete Uno deck
         shuffleDeck(); //Shuffles Uno deck
     }
 
-    void shuffleDeck() {
+    public static Deck getInstance() { //Returns a deck
+        if (instance == null) {
+            instance = new Deck();
+        }
+        return instance;
+    }
+
+    void shuffleDeck() { //Shuffles Uno deck
         Collections.shuffle(cards);
     }
 
@@ -40,7 +48,7 @@ class Deck {
     }
 
     private void generateWildCards() { //Adds all wild and wild draw four cards to the cards stack. Called by createDeck
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             cards.push(new Card("wild", "wild"));
             cards.push(new Card("wild", "drawFour"));
         }
