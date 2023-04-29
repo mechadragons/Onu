@@ -14,45 +14,52 @@ class Coordinates {
                     x = 0;
                     break;
                 case "yellow":
-                    x = 255;
+                    x = 257;
                     break;
                 case "green":
-                    x = 510;
+                    x = 513;
                     break;
                 case "blue":
-                    x = 765;
+                    x = 770;
             }
         }
         else if (card.symbol == "reverse" || card.symbol == "plusTwo") {
             if (card.color == "blue") {
-                y = 665;
+                y = 668;
                 switch (card.symbol) {
                     case "reverse":
                         x = 0;
                         break;
                     case "plusTwo":
-                        x = 85;
+                        x = 86;
                 }
             }
             else {
-                y = 532;
+                y = 534;
                 switch (card.color) {
                     case "red":
                         switch (card.symbol) {
                             case "reverse":
-                                x = 85;
+                                x = 86;
                                 break;
                             case "plusTwo":
-                                x = 170;
+                                x = 171;
                         }
                         break;
+                    case "yellow":
+                        switch (card.symbol) {
+                            case "reverse":
+                                x = 342;
+                            case "plusTwo":
+                                x = 428;
+                        }
                     case "green":
                         switch (card.symbol) {
                             case "reverse":
-                                x = 595;
+                                x = 599;
                                 break;
                             case "plusTwo":
-                                x = 680;
+                                x = 684;
                         }
                 }
             }
@@ -76,15 +83,15 @@ class Coordinates {
         }
     }
 
-    private int gety(int colorInt) {
-        return (int) Math.round(HEIGHT * colorInt);
-    }
-
     private int getx(String symbol) {
         int symbolInt = Integer.parseInt(symbol);
         if (symbolInt == 0) {
             return (int) Math.round(WIDTH * 9);
         }
         return (int) Math.round(WIDTH * (symbolInt - 1));
+    }
+
+    private int gety(int colorInt) {
+        return (int) Math.round(HEIGHT * colorInt);
     }
 }
