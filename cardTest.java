@@ -1,6 +1,6 @@
 class CardTest {
     public static void main(String args[]) {
-        CardTest test = new CardTest();
+        //CardTest test = new CardTest();
         //test.createCard();
         //test.createDeckTest();
         //test.drawHandTest();
@@ -9,7 +9,6 @@ class CardTest {
         //test.playCardTest();
         //test.drawTest();
         //test.reshuffleTest();
-        //test.GUITest();
     }
 
     void createCard() {
@@ -117,11 +116,5 @@ class CardTest {
         }
         System.out.println("Top card of discard, after shuffling:");
         System.out.println("Card color: " + discard.topCard.color + " // Card symbol: " + discard.topCard.symbol);
-    }
-
-    void GUITest() {
-        Deck deck = Deck.getInstance();
-        GUI GUI = new GUI();
-        GUI.drawCard(deck.cards.peek());
     }
 }
