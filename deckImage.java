@@ -26,4 +26,12 @@ class DeckImage {
         g.drawImage(deckImage, 0, 0, WIDTH, HEIGHT, coordinates.x, coordinates.y, coordinates.x + WIDTH, coordinates.y + HEIGHT, null);
         return cardImage;
     }
+
+    int getWidth() {
+        return WIDTH;
+    }
+
+    int getHeight() {
+        return HEIGHT;
+    }
 }

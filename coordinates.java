@@ -17,7 +17,7 @@ class Coordinates {
             }
         }
         else if (card.symbol == "skip") {
-            y = 532;
+            y = 534;
             switch (card.color) {
                 case "red":
                     x = 0;

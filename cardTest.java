@@ -11,6 +11,7 @@ class CardTest {
         //test.reshuffleTest();
         //test.GUITest();
         //test.handGenerationTest();
+        //test.generateHandTest();
     }
 
     void createCard() {
@@ -123,11 +124,11 @@ class CardTest {
     void GUITest() {
         Deck deck = Deck.getInstance();
         GUI GUI = new GUI();
-        GUI.drawCard(deck.cards.peek());
+        GUI.drawCard(deck.cards.peek(), 0, 0);
     }
 
     void handGenerationTest() {
-        GameStart gameStart = new GameStart(3);
+        Hands gameStart = new Hands(3);
         for (Hand hand : gameStart.hands) {
             System.out.println("{");
             for (Card card : hand.cards) {
@@ -135,5 +136,25 @@ class CardTest {
             }
             System.out.print("}");
         }
+    }
+
+    void generateHandTest() {
+        Hands hands = new Hands(3);
+        GUI gui = new GUI();
+        DeckImage deckImage = new DeckImage("cards.png");
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.hands[0].draw();
+        hands.drawHand(1, deckImage, gui);
     }
 }

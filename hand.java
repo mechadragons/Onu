@@ -33,4 +33,12 @@ class Hand {
             draw();
         }
     }
+
+    public int getLength() {
+        return cards.size();
+    }
+
+    public Card getCard(int index) {
+        return cards.get(index);
+    }
 }
