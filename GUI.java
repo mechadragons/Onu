@@ -1,5 +1,6 @@
 import java.awt.image.BufferedImage;
 import javax.swing.*;
+import java.awt.Dimension;
 
 public class GUI {
     JFrame unoScreen = new JFrame("Uno");
@@ -7,7 +8,9 @@ public class GUI {
     public GUI() {
         unoScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         unoScreen.setLayout(null);
-        unoScreen.setSize(1000, 700);
+        Dimension screenSize = new Dimension(1000, 700);
+        unoScreen.setPreferredSize(screenSize);
+        unoScreen.pack();
         unoScreen.setVisible(true);
     }
 
