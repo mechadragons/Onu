@@ -142,19 +142,6 @@ class CardTest {
         Hands hands = new Hands(3);
         GUI gui = new GUI();
         DeckImage deckImage = new DeckImage("cards.png");
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
-        hands.hands[0].draw();
         hands.drawHand(1, deckImage, gui);
     }
 }

@@ -33,7 +33,7 @@ public class Hands {
         }
         else {
             margins = handWidth - screenWidth;
-            margin = cardWidth - (int) Math.ceil((double) margins / (double) numMargins);
+            margin = screenWidth / handLength - cardWidth / handLength;
         }
         for (int i = 0; i < handLength; i++) {
             gui.drawCard(hand.getCard(i), pos, 50);
