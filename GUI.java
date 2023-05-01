@@ -3,15 +3,23 @@ import javax.swing.*;
 import java.awt.Dimension;
 
 public class GUI {
+    private static GUI instance;
     JFrame unoScreen = new JFrame("Uno");
     DeckImage deckImage = new DeckImage("cards.png");
-    public GUI() {
+    private GUI() {
         unoScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         unoScreen.setLayout(null);
         Dimension screenSize = new Dimension(1000, 700);
         unoScreen.setPreferredSize(screenSize);
         unoScreen.pack();
         unoScreen.setVisible(true);
+    }
+
+    public static GUI getInstance() { //Returns a deck
+        if (instance == null) {
+            instance = new GUI();
+        }
+        return instance;
     }
 
     void drawCard(Card card, int x, int y) {
@@ -28,5 +36,9 @@ public class GUI {
 
     public int getHeight() {
         return unoScreen.getHeight();
+    }
+
+    public void drawDiscard(Card topCard) {
+        drawCard(topCard, getWidth() / 2 + deckImage.WIDTH / 2, getHeight() / 2 - deckImage.HEIGHT / 2);
     }
 }

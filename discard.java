@@ -4,6 +4,7 @@ class Discard {
     private static Discard instance;
     Stack<Card> cards = new Stack<Card>(); //A stack of cards in the discard pile. These will not be in the correct order, as only the top card matters
     Deck deck = Deck.getInstance();
+    GUI gui = GUI.getInstance();
     Card topCard; //The card on top of the discard pile
 
     private Discard() { //Discard is a singleton
@@ -20,6 +21,7 @@ class Discard {
     void addCard(Card card) { //Takes a card and adds it to the "top" of the discard pile
         topCard = card;
         cards.push(card);
+        gui.drawDiscard(topCard);
     }
 
     void reshuffle() {

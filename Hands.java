@@ -2,6 +2,7 @@ import java.lang.Math;
 
 public class Hands {
     Hand[] hands;
+    GUI gui = GUI.getInstance();
 
     Hands(int numPlayers) {
         hands = new Hand[numPlayers];
@@ -14,7 +15,7 @@ public class Hands {
         return hands[player - 1];
     }
 
-    public void drawHand(int player, DeckImage deckImage, GUI gui) {
+    public void drawHand(int player, DeckImage deckImage) {
         Hand hand = hands[player - 1];
         int handLength = hand.getLength();
         int cardWidth = deckImage.getWidth();

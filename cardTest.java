@@ -11,7 +11,8 @@ class CardTest {
         //test.reshuffleTest();
         //test.GUITest();
         //test.handGenerationTest();
-        test.generateHandTest();
+        //test.generateHandTest();
+        //test.drawDiscardTest();
     }
 
     void createCard() {
@@ -123,8 +124,8 @@ class CardTest {
 
     void GUITest() {
         Deck deck = Deck.getInstance();
-        GUI GUI = new GUI();
-        GUI.drawCard(deck.cards.peek(), 0, 0);
+        GUI gui = GUI.getInstance();
+        gui.drawCard(deck.cards.peek(), 0, 0);
     }
 
     void handGenerationTest() {
@@ -140,8 +141,11 @@ class CardTest {
 
     void generateHandTest() {
         Hands hands = new Hands(3);
-        GUI gui = new GUI();
         DeckImage deckImage = new DeckImage("cards.png");
-        hands.drawHand(1, deckImage, gui);
+        hands.drawHand(1, deckImage);
+    }
+
+    void drawDiscardTest() {
+        Discard discard = Discard.getInstance();
     }
 }
