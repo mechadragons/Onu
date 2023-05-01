@@ -36,7 +36,7 @@ public class Hands {
             margin = screenWidth / handLength - cardWidth / handLength;
         }
         for (int i = 0; i < handLength; i++) {
-            gui.drawCard(hand.getCard(i), pos, 50);
+            gui.drawCard(hand.getCard(i), pos, gui.getHeight() / 3 * 2);
             pos += margin;
         }
     }

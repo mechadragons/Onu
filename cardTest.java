@@ -11,7 +11,7 @@ class CardTest {
         //test.reshuffleTest();
         //test.GUITest();
         //test.handGenerationTest();
-        //test.generateHandTest();
+        test.generateHandTest();
     }
 
     void createCard() {
