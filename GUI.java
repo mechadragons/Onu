@@ -7,6 +7,9 @@ public class GUI {
     JFrame unoScreen = new JFrame("Uno");
     DeckImage deckImage = new DeckImage("cards.png");
     DeckImage cardBackImage = new DeckImage("cardBack.png");
+    int halfScreenWidth;
+    int halfScreenHeight;
+
     private GUI() {
         unoScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         unoScreen.setLayout(null);
@@ -14,6 +17,8 @@ public class GUI {
         unoScreen.setPreferredSize(screenSize);
         unoScreen.pack();
         unoScreen.setVisible(true);
+        halfScreenWidth = getWidth() / 2;
+        halfScreenHeight = getHeight() / 2;
     }
 
     public static GUI getInstance() { //Returns a GUI
@@ -48,6 +53,14 @@ public class GUI {
     }
 
     public void drawDiscard(Card topCard) {
-        drawCard(topCard, 0, 0);
+        int x = halfScreenWidth + 20;
+        int y = halfScreenHeight - deckImage.HEIGHT / 2;
+        drawCard(topCard, x, y);
+    }
+
+    public void drawDeck() {
+        int x = halfScreenWidth - deckImage.WIDTH - 20;
+        int y = halfScreenHeight - deckImage.HEIGHT / 2;
+        drawCard(x, y);
     }
 }

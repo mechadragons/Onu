@@ -9,7 +9,7 @@ class Deck { //Deck class is a SINGLETON! Use getInstance method to create and a
     private Deck() { //Constructor
         createDeck(); //Generates complete Uno deck
         shuffleDeck(); //Shuffles Uno deck
-        gui.drawCard(0, 0);
+        gui.drawDeck();
     }
 
     public static Deck getInstance() { //Returns a deck

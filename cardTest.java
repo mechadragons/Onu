@@ -11,9 +11,9 @@ class CardTest {
         //test.reshuffleTest();
         //test.GUITest();
         //test.handGenerationTest();
-        test.generateHandTest();
+        //test.generateHandTest();
         //test.drawDiscardTest();
-        test.drawDeckTest();
+        //test.drawDeckTest();
         //test.gameStartTest();
     }
 
