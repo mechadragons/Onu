@@ -11,9 +11,10 @@ class CardTest {
         //test.reshuffleTest();
         //test.GUITest();
         //test.handGenerationTest();
-        test.generateHandTest();
+        //test.generateHandTest();
         //test.drawDiscardTest();
-        test.drawDeckTest();
+        //test.drawDeckTest();
+        test.gameStartTest();
     }
 
     void createCard() {
@@ -152,5 +153,9 @@ class CardTest {
 
     void drawDeckTest() {
         Deck deck = Deck.getInstance();
+    }
+
+    void gameStartTest() {
+        GameStart gameStart = new GameStart(3);
     }
 }
