@@ -1,6 +1,7 @@
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.awt.Dimension;
+import java.awt.Graphics;
 
 public class GUI {
     private static GUI instance;
@@ -45,9 +46,14 @@ public class GUI {
 
     public void drawDeck() {
         JLabel deckLabel = new JLabel("The deck should appear here");
-        BufferedImage cardBackImage = new BufferedImage(deckImage.WIDTH, deckImage.HEIGHT, BufferedImage.TYPE_INT_ARGB);
+        BufferedImage cardBack = new BufferedImage(deckImage.WIDTH, deckImage.HEIGHT, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = cardBack.createGraphics();
+        int x = getWidth() / 2;
+        int y = getHeight() / 2;
+        int halfCardWidth = deckImage.WIDTH / 2;
+        g.drawImage(cardBackImage, getWidth() / 2 - deckImage.WIDTH / 2, getHeight() / 2 + deckImage.HEIGHT / 2, getWidth() / )
         deckLabel.setBounds(getWidth() / 2 + deckImage.WIDTH / 2, getHeight() / 2 - deckImage.HEIGHT / 2, deckImage.WIDTH, deckImage.HEIGHT);
         unoScreen.getContentPane().add(deckLabel);
-        deckLabel.setIcon(new ImageIcon(cardBackImage));
+        deckLabel.setIcon(new ImageIcon(cardBack));
     }
 }
