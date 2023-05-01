@@ -1,6 +1,7 @@
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.awt.Dimension;
+import java.awt.Graphics;
 
 public class GUI {
     private static GUI instance;
@@ -16,7 +17,7 @@ public class GUI {
         unoScreen.setVisible(true);
     }
 
-    public static GUI getInstance() { //Returns a deck
+    public static GUI getInstance() { //Returns a GUI
         if (instance == null) {
             instance = new GUI();
         }
@@ -40,14 +41,22 @@ public class GUI {
     }
 
     public void drawDiscard(Card topCard) {
-        drawCard(topCard, getWidth() / 2 + deckImage.WIDTH / 2, getHeight() / 2 - deckImage.HEIGHT / 2);
+        drawCard(topCard, 0, 0);
     }
 
     public void drawDeck() {
+        int deckWidth = 486;
+        int deckHeight = 759;
         JLabel deckLabel = new JLabel("The deck should appear here");
-        BufferedImage cardBackImage = new BufferedImage(deckImage.WIDTH, deckImage.HEIGHT, BufferedImage.TYPE_INT_ARGB);
-        deckLabel.setBounds(getWidth() / 2 + deckImage.WIDTH / 2, getHeight() / 2 - deckImage.HEIGHT / 2, deckImage.WIDTH, deckImage.HEIGHT);
+        BufferedImage cardBack = new BufferedImage(deckWidth, deckHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = cardBack.createGraphics();
+        int x = getWidth() / 2;
+        int y = getHeight() / 2;
+        int halfCardWidth = deckImage.WIDTH / 2;
+        int halfCardHeight = deckImage.HEIGHT / 2;
+        g.drawImage(cardBack, x - halfCardWidth, y - halfCardHeight, x + halfCardWidth, y + halfCardHeight, 0, 0, deckWidth, deckHeight, null);
+        deckLabel.setBounds(x - halfCardWidth, y - halfCardHeight, deckImage.WIDTH, deckImage.HEIGHT);
         unoScreen.getContentPane().add(deckLabel);
-        deckLabel.setIcon(new ImageIcon(cardBackImage));
+        deckLabel.setIcon(new ImageIcon(cardBack));
     }
 }
