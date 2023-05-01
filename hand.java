@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import javax.swing.JLayeredPane;
 
 class Hand {
-    ArrayList<Card> cards = new ArrayList<Card>(); //An ArrayList of cards in a hand
+    ArrayList<CardPane> cards = new ArrayList<CardPane>();
     Deck deck = Deck.getInstance();
     Discard discard = Discard.getInstance();
 
@@ -13,15 +14,18 @@ class Hand {
         if (deck.cards.isEmpty()) {
             discard.reshuffle();
         }
-        cards.add(deck.cards.peek());
+        cards.add(makePane(deck.cards.peek()));
         deck.cards.pop();
     }
 
     void playCard(int index) { //Takes in an index of a card in the hand, and attempts to play the card at that index. If it does not match, a message stating such will be printed instead.
-        Card card = cards.get(index);
+        Card card = getCard(index);
         if (card.color == "wild" || discard.topCard.color == "wild" || card.color == discard.topCard.color) {
             discard.addCard(card);
             cards.remove(index);
+            for (int i = index; i < getLength(); i++) {
+                cards.get(i).layer--;
+            }
         }
         else {
             System.out.println("That card does not have a matching color or symbol!");
@@ -39,6 +43,19 @@ class Hand {
     }
 
     public Card getCard(int index) {
-        return cards.get(index);
+        return cards.get(index).card;
+    }
+
+    private CardPane makePane(Card card) {
+        CardPane pane = new CardPane(getLength() - 1, card, new JLayeredPane());
+        return pane;
+    }
+
+    public JLayeredPane getPane(int index) {
+        return cards.get(index).pane;
+    }
+
+    public int getLayer(int index) {
+        return cards.get(index).layer;
     }
 }

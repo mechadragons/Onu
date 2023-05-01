@@ -31,18 +31,18 @@ class CardTest {
         }
     }
 
-    void drawHandTest() {
-        Deck deck = Deck.getInstance();
-        Hand hand = new Hand();
-        System.out.println("Hand:");
-        for (Card card : hand.cards) {
-            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
-        }
-        System.out.println("--------------\nDeck:\n");
-        for (Card card : deck.cards) {
-            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
-        }
-    }
+    // void drawHandTest() {
+    //     Deck deck = Deck.getInstance();
+    //     Hand hand = new Hand();
+    //     System.out.println("Hand:");
+    //     for (Card card : hand.cards) {
+    //         System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
+    //     }
+    //     System.out.println("--------------\nDeck:\n");
+    //     for (Card card : deck.cards) {
+    //         System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
+    //     }
+    // }
 
     void createDiscardTest() {
         Deck deck = Deck.getInstance();
@@ -66,30 +66,30 @@ class CardTest {
         System.out.println("\nThe above two lines should be the same");
     }
 
-    void playCardTest() {
-        Hand hand = new Hand();
-        Discard discard = Discard.getInstance();
-        System.out.println("Hand:");
-        for (Card card : hand.cards) {
-            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
-        }
-        System.out.println("Top card: ");
-        System.out.println("Card color: " + discard.topCard.color + " // Card symbol: " + discard.topCard.symbol);
-        System.out.println("--------------");
-        hand.playCard(0);
-    }
+    // void playCardTest() {
+    //     Hand hand = new Hand();
+    //     Discard discard = Discard.getInstance();
+    //     System.out.println("Hand:");
+    //     for (Card card : hand.cards) {
+    //         System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
+    //     }
+    //     System.out.println("Top card: ");
+    //     System.out.println("Card color: " + discard.topCard.color + " // Card symbol: " + discard.topCard.symbol);
+    //     System.out.println("--------------");
+    //     hand.playCard(0);
+    // }
 
-    void drawTest() {
-        Deck deck = Deck.getInstance();
-        Hand hand = new Hand();
-        while (!deck.cards.isEmpty()) {
-            hand.draw();
-        }
-        System.out.println("Hand:");
-        for (Card card : hand.cards) {
-            System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
-        }
-    }
+    // void drawTest() {
+    //     Deck deck = Deck.getInstance();
+    //     Hand hand = new Hand();
+    //     while (!deck.cards.isEmpty()) {
+    //         hand.draw();
+    //     }
+    //     System.out.println("Hand:");
+    //     for (Card card : hand.cards) {
+    //         System.out.println("Card color: " + card.color + " // Card symbol: " + card.symbol);
+    //     }
+    // }
 
     void reshuffleTest() {
         Deck deck = Deck.getInstance();
@@ -131,20 +131,33 @@ class CardTest {
         gui.drawCard(deck.cards.peek(), 0, 0);
     }
 
-    void handGenerationTest() {
-        Hands gameStart = Hands.getInstance(3);
-        for (Hand hand : gameStart.hands) {
-            System.out.println("{");
-            for (Card card : hand.cards) {
-                System.out.print(card.color + " " + card.symbol + ", ");
-            }
-            System.out.print("}");
-        }
-    }
+    // void handGenerationTest() {
+    //     Hands gameStart = Hands.getInstance(3);
+    //     for (Hand hand : gameStart.hands) {
+    //         System.out.println("{");
+    //         for (Card card : hand.cards) {
+    //             System.out.print(card.color + " " + card.symbol + ", ");
+    //         }
+    //         System.out.print("}");
+    //     }
+    // }
 
     void generateHandTest() {
         Hands hands = Hands.getInstance(3);
         DeckImage deckImage = new DeckImage("cards.png");
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
+        hands.getHand(1).draw();
         hands.drawHand(1, deckImage);
     }
 

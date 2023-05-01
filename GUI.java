@@ -1,8 +1,9 @@
 import java.awt.image.BufferedImage;
 import javax.swing.*;
-
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUI {
     private static GUI instance;
@@ -28,6 +29,17 @@ public class GUI {
             instance = new GUI();
         }
         return instance;
+    }
+
+    void drawCard(CardPane cardPane, int x, int y) {
+        Card card = cardPane.card;
+        JLayeredPane pane = cardPane.pane;
+        JLabel cardLabel = new JLabel("A " + card.color + " " + card.symbol + " should appear here");
+        BufferedImage cardImage = deckImage.getImage(card);
+        cardLabel.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
+        pane.add(cardLabel);
+        cardLabel.setIcon(new ImageIcon(cardImage));
+        unoScreen.getContentPane().add(pane);
     }
 
     void drawCard(Card card, int x, int y) {
@@ -108,5 +120,15 @@ public class GUI {
         playerPanel.setSize(width, height);
 
         return playerPanel;
+    }
+
+    void cardActionListener(JLayeredPane card) {
+        int layer = card.getLayer(card);
+        card.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent me) {
+                card.setLayer(card, 100);
+                System.out.println("you fool");
+            }
+        });
     }
 }
