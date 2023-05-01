@@ -27,6 +27,15 @@ class DeckImage {
         return cardImage;
     }
 
+    BufferedImage getImage() {
+        BufferedImage cardImage = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_ARGB);
+        Graphics g = cardImage.createGraphics();
+        int coordX = 0;
+        int coordY = 801;
+        g.drawImage(deckImage, 0, 0, WIDTH, HEIGHT, coordX, coordY, coordX + WIDTH, coordY + HEIGHT, null);
+        return cardImage;
+    }
+
     int getWidth() {
         return WIDTH;
     }
