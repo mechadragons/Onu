@@ -4,6 +4,6 @@ public class GameStart {
 
     GameStart(int numPlayers) {
         discard = Discard.getInstance();
-        hands = new Hands(numPlayers);
+        hands = Hands.getInstance(numPlayers);
     }
 }

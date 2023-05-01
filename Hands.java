@@ -1,14 +1,26 @@
 import java.lang.Math;
 
 public class Hands {
+    private static Hands instance;
     Hand[] hands;
     GUI gui = GUI.getInstance();
 
-    Hands(int numPlayers) {
+    private Hands(int numPlayers) {
         hands = new Hand[numPlayers];
         for (int i = 0; i < numPlayers; i++) {
             hands[i] = new Hand();
         }
+    }
+
+    public static Hands getInstance(int numPlayers) {
+        if (instance == null) {
+            instance = new Hands(numPlayers);
+        }
+        return instance;
+    }
+
+    public static Hands getInstance() {
+        return instance;
     }
 
     public Hand getHand(int player) {

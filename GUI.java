@@ -68,6 +68,9 @@ public class GUI {
 
     public void drawPlayers(String[] players) {
         int numPlayers = players.length;
+        Hands hands = Hands.getInstance(numPlayers);
+        Hand hand;
+        int playerNum = 1;
         int panelWidth = 102;
         int panelHeight = 100;
         int margins = getWidth() - panelWidth * numPlayers;
@@ -85,6 +88,13 @@ public class GUI {
             JLabel playerLabel = new JLabel(player);
             playerPanel.add(playerLabel);
             playerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+            hand = hands.getHand(playerNum);
+            JLabel handLabel = new JLabel("Cards: " + Integer.toString(hand.getLength()));
+            playerPanel.add(handLabel);
+            handLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            handLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+
             unoScreen.validate();
         }
     }
@@ -92,6 +102,7 @@ public class GUI {
     private JPanel makePlayerPanel(int x, int y, int width, int height) {
         JPanel playerPanel = new JPanel();
         playerPanel.setBackground(Color.gray);
+        playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.PAGE_AXIS));
         unoScreen.add(playerPanel);
         playerPanel.setLocation(x, y);
         playerPanel.setSize(width, height);
