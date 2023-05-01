@@ -11,8 +11,9 @@ class CardTest {
         //test.reshuffleTest();
         //test.GUITest();
         //test.handGenerationTest();
-        //test.generateHandTest();
+        test.generateHandTest();
         //test.drawDiscardTest();
+        test.drawDeckTest();
     }
 
     void createCard() {
@@ -147,5 +148,9 @@ class CardTest {
 
     void drawDiscardTest() {
         Discard discard = Discard.getInstance();
+    }
+
+    void drawDeckTest() {
+        Deck deck = Deck.getInstance();
     }
 }

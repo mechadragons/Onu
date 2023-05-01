@@ -3,11 +3,13 @@ import java.util.Collections;
 
 class Deck { //Deck class is a SINGLETON! Use getInstance method to create and access
     private static Deck instance;
+    GUI gui = GUI.getInstance();
     Stack<Card> cards = new Stack<Card>(); //A stack of the cards in the deck
 
     private Deck() { //Constructor
         createDeck(); //Generates complete Uno deck
         shuffleDeck(); //Shuffles Uno deck
+        gui.drawDeck();
     }
 
     public static Deck getInstance() { //Returns a deck

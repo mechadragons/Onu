@@ -6,6 +6,7 @@ public class GUI {
     private static GUI instance;
     JFrame unoScreen = new JFrame("Uno");
     DeckImage deckImage = new DeckImage("cards.png");
+    DeckImage cardBackImage = new DeckImage("cardBack.png");
     private GUI() {
         unoScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         unoScreen.setLayout(null);
@@ -40,5 +41,13 @@ public class GUI {
 
     public void drawDiscard(Card topCard) {
         drawCard(topCard, getWidth() / 2 + deckImage.WIDTH / 2, getHeight() / 2 - deckImage.HEIGHT / 2);
+    }
+
+    public void drawDeck() {
+        JLabel deckLabel = new JLabel("The deck should appear here");
+        BufferedImage cardBackImage = new BufferedImage(deckImage.WIDTH, deckImage.HEIGHT, BufferedImage.TYPE_INT_ARGB);
+        deckLabel.setBounds(getWidth() / 2 + deckImage.WIDTH / 2, getHeight() / 2 - deckImage.HEIGHT / 2, deckImage.WIDTH, deckImage.HEIGHT);
+        unoScreen.getContentPane().add(deckLabel);
+        deckLabel.setIcon(new ImageIcon(cardBackImage));
     }
 }
