@@ -1,5 +1,7 @@
 import java.awt.image.BufferedImage;
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.Dimension;
 
 public class GUI {
@@ -62,5 +64,34 @@ public class GUI {
         int x = halfScreenWidth - deckImage.WIDTH - 20;
         int y = halfScreenHeight - deckImage.HEIGHT / 2;
         drawCard(x, y);
+    }
+
+    public void drawPlayers(String[] players) {
+        int numPlayers = players.length;
+        int panelWidth = 102;
+        int panelHeight = 100;
+        int margins = getWidth() - panelWidth * numPlayers;
+        int numMargins = numPlayers - 1;
+        int margin = 20;
+        int pos;
+
+        pos = (margins - margin * numMargins) / 2;
+        margin += panelWidth;
+
+        for (int player = 1; player <= numPlayers; player++) {
+            JPanel playerPanel = makePlayerPanel(pos, 20, panelWidth, panelHeight);
+            pos += margin;
+        }
+    }
+
+    public JPanel makePlayerPanel(int x, int y, int width, int height) {
+        JPanel playerPanel = new JPanel();
+        playerPanel.setLayout(null);
+        playerPanel.setBackground(Color.gray);
+        unoScreen.add(playerPanel);
+        playerPanel.setLocation(x, y);
+        playerPanel.setSize(width, height);
+
+        return playerPanel;
     }
 }
