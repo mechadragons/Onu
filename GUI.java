@@ -78,15 +78,19 @@ public class GUI {
         pos = (margins - margin * numMargins) / 2;
         margin += panelWidth;
 
-        for (int player = 1; player <= numPlayers; player++) {
+        for (String player : players) {
             JPanel playerPanel = makePlayerPanel(pos, 20, panelWidth, panelHeight);
             pos += margin;
+
+            JLabel playerLabel = new JLabel(player);
+            playerPanel.add(playerLabel);
+            playerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            unoScreen.validate();
         }
     }
 
-    public JPanel makePlayerPanel(int x, int y, int width, int height) {
+    private JPanel makePlayerPanel(int x, int y, int width, int height) {
         JPanel playerPanel = new JPanel();
-        playerPanel.setLayout(null);
         playerPanel.setBackground(Color.gray);
         unoScreen.add(playerPanel);
         playerPanel.setLocation(x, y);
