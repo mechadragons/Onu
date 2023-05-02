@@ -1,6 +1,5 @@
 import java.awt.image.BufferedImage;
 import javax.swing.*;
-
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -31,11 +30,13 @@ public class GUI {
     }
 
     void drawCard(Card card, int x, int y) {
-        JLabel cardLabel = new JLabel("A " + card.color + " " + card.symbol + " should appear here");
+        JButton cardButton = new JButton();
+        cardButton.setBorder(null);
+        cardButton.setContentAreaFilled(false);
         BufferedImage cardImage = deckImage.getImage(card);
-        cardLabel.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
-        unoScreen.getContentPane().add(cardLabel);
-        cardLabel.setIcon(new ImageIcon(cardImage));
+        cardButton.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
+        unoScreen.getContentPane().add(cardButton);
+        cardButton.setIcon(new ImageIcon(cardImage));
     }
 
     void drawCard(int x, int y) {
