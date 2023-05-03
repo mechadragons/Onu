@@ -52,7 +52,19 @@ public class UnoMenu extends JFrame {
     }
 
     private void viewRules() {
-        // UnoRulesPopUp.main(new String[0]);
+        String rulesText = "UNO Rules:\n" +
+                "- The game is played with a deck of cards.\n" +
+                "- Each player is dealt 7 cards.\n" +
+                "- The first player to get rid of all their cards wins.\n" +
+                "- Players take turns playing a card that matches the top card of the discard pile by either number, color, or symbol.\n" +
+                "- If a player cannot play a card, they must draw a card from the deck.\n" +
+                "- Special cards have unique effects and can be played to disrupt other players' turns.\n" +
+                "- When a player has one card remaining, they must call 'UNO'.\n" +
+                "- If a player forgets to call 'UNO' and is caught by another player, they must draw 2 cards as a penalty.\n" +
+                "- The game continues until a player has no cards left or the deck is empty.\n" +
+                "- In case of a tie, the player with the fewest points wins.";
+    
+        JOptionPane.showMessageDialog(this, rulesText, "UNO Rules", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void openMainMenu() {
@@ -114,9 +126,8 @@ public class UnoMenu extends JFrame {
             JOptionPane.showMessageDialog(this, "At least 2 players are required to start the game.");
         } else {
             // Start the Uno game with the provided player names
-            // UnoGame unoGame = new UnoGame(playerNames);
-            // unoGame.start();
-            // dispose(); // Close the menu
+            GameStart newGame = new GameStart(playerNames);
+            dispose(); // Close the menu
         }
     }
 
