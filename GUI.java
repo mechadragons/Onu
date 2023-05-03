@@ -12,6 +12,7 @@ public class GUI implements ActionListener{
     Hands hands;
     String[] playerArray;
     JButton deckButton;
+    JButton nextTurn;
     int halfScreenWidth;
     int halfScreenHeight;
     public int currentPlayer;
@@ -26,8 +27,9 @@ public class GUI implements ActionListener{
         unoScreen.setVisible(true);
         halfScreenWidth = getWidth() / 2;
         halfScreenHeight = getHeight() / 2;
-        currentPlayer = -1;
+        currentPlayer = 1;
         deckButton = newButton();
+        nextTurn = nextTurnButton();
     }
 
     public static GUI getInstance() { //Returns a GUI
@@ -147,22 +149,43 @@ public class GUI implements ActionListener{
         return cardButton;
     }
 
+    JButton nextTurnButton() {
+        JButton nextButton = new JButton();
+        nextButton.addActionListener(this);
+
+        return nextButton;
+    }
+
+    public void screen() {
+        unoScreen.getContentPane().removeAll();
+        nextTurn.setBounds(0, 0, getWidth(), getHeight());
+        unoScreen.getContentPane().add(nextTurn);
+    }
+
     public void actionPerformed(ActionEvent e) {
         hands = Hands.getInstance(numPlayers);
         JButton button = (JButton) e.getSource();
-        Hand hand = hands.getHand(1);
+        Hand hand = hands.getHand(currentPlayer);
         int index = 0;
         if (button == deckButton) {
             hand.draw();
         }
         for (Card card : hand.cards) {
             if (card.button == button) {
-                hand.playCard(index);
-                break;
+                boolean playable = hand.playCard(index);
+                if (playable) {
+                    if (currentPlayer < numPlayers) {
+                        currentPlayer++;
+                    }
+                    else {
+                        currentPlayer = 1;
+                    }
+                    break;
+                }
             }
             index++;
         }
-        
+
         update();
     }
 
@@ -170,7 +193,7 @@ public class GUI implements ActionListener{
         Discard discard = Discard.getInstance();
         unoScreen.getContentPane().removeAll();
         hands = hands.getInstance(numPlayers);
-        hands.drawHand(1, deckImage);
+        hands.drawHand(currentPlayer, deckImage);
         drawDiscard(discard.topCard);
         drawDeck();
         drawPlayers();
