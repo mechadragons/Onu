@@ -133,17 +133,16 @@ public class GUI implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         hands = Hands.getInstance(numPlayers);
-        // System.out.println(e.getActionCommand());
-        // JButton button = (JButton) e.getSource();
-        //currentPlayer = 1;
+        JButton button = (JButton) e.getSource();
         Hand hand = hands.getHand(1);
-        // int index = 0;
-        // for (Card card : hand.cards) {
-        //     if (card.button == button) {
-        //         hand.playCard(index);
-        //     }
-        //     index++;
-        // }
-        // unoScreen.repaint();
+        int index = 0;
+        for (Card card : hand.cards) {
+            if (card.button == button) {
+                hand.playCard(index);
+                break;
+            }
+            index++;
+        }
+        unoScreen.repaint();
     }
 }
