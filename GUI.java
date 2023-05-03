@@ -2,8 +2,10 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GUI {
+public class GUI implements ActionListener{
     private static GUI instance;
     JFrame unoScreen = new JFrame("Uno");
     DeckImage deckImage = new DeckImage("cards.png");
@@ -35,6 +37,7 @@ public class GUI {
         cardButton.setContentAreaFilled(false);
         BufferedImage cardImage = deckImage.getImage(card);
         cardButton.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
+        cardButton.addActionListener(this);
         unoScreen.getContentPane().add(cardButton);
         cardButton.setIcon(new ImageIcon(cardImage));
     }
@@ -113,5 +116,10 @@ public class GUI {
         playerPanel.setSize(width, height);
 
         return playerPanel;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
+        JButton button = (JButton) e.getSource();
     }
 }
