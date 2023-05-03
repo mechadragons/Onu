@@ -35,7 +35,7 @@ public class GUI implements ActionListener{
         JButton cardButton = card.button;
         cardButton.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
         unoScreen.getContentPane().add(cardButton);
-        unoScreen.validate();
+        unoScreen.repaint();
     }
 
     void drawCard(int x, int y) {
