@@ -19,12 +19,14 @@ class Hand {
 
     void playCard(int index) { //Takes in an index of a card in the hand, and attempts to play the card at that index. If it does not match, a message stating such will be printed instead.
         Card card = cards.get(index);
-        if (card.color == "wild" || discard.topCard.color == "wild" || card.color == discard.topCard.color || card.symbol == discard.topCard.symbol) {
+        if (card.color.equals("wild") || discard.topCard.color.equals("wild") || card.color.equals(discard.topCard.color) || card.symbol.equals(discard.topCard.symbol)) {
             discard.addCard(card);
             cards.remove(index);
         }
         else {
             System.out.println("That card does not have a matching color or symbol!");
+            System.out.println("Card: " + card.color + " " + card.symbol);
+            System.out.println("Discard: " + discard.topCard.color + " " + discard.topCard.symbol);
         }
     }
 
