@@ -58,7 +58,11 @@ public class GUI {
     public void drawDiscard(Card topCard) {
         int x = halfScreenWidth + 20;
         int y = halfScreenHeight - deckImage.HEIGHT / 2;
-        drawCard(topCard, x, y);
+        JLabel discardLabel = new JLabel("The discard pile should appear here");
+        BufferedImage cardImage = deckImage.getImage(topCard);
+        discardLabel.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
+        unoScreen.getContentPane().add(discardLabel);
+        discardLabel.setIcon(new ImageIcon(cardImage));
     }
 
     public void drawDeck() {
