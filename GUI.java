@@ -11,6 +11,7 @@ public class GUI implements ActionListener{
     DeckImage deckImage = new DeckImage("cards.png");
     DeckImage cardBackImage = new DeckImage("cardBack.png");
     Hands hands;
+    String[] playerArray;
     int halfScreenWidth;
     int halfScreenHeight;
     public int currentPlayer;
@@ -75,6 +76,7 @@ public class GUI implements ActionListener{
     }
 
     public void drawPlayers(String[] players) {
+        playerArray = players;
         int numPlayers = players.length;
         Hands hands = Hands.getInstance(numPlayers);
         Hand hand;
@@ -107,6 +109,10 @@ public class GUI implements ActionListener{
 
             playerNum++;
         }
+    }
+
+    public void drawPlayers() {
+        drawPlayers(playerArray);
     }
 
     private JPanel makePlayerPanel(int x, int y, int width, int height) {
@@ -143,6 +149,18 @@ public class GUI implements ActionListener{
             }
             index++;
         }
+        
+        update();
+    }
+
+    public void update() {
+        Discard discard = Discard.getInstance();
+        unoScreen.getContentPane().removeAll();
+        hands = hands.getInstance(numPlayers);
+        hands.drawHand(1, deckImage);
+        drawDiscard(discard.topCard);
+        drawDeck();
+        drawPlayers();
         unoScreen.repaint();
     }
 }
