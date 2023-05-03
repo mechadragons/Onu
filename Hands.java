@@ -4,8 +4,10 @@ public class Hands {
     private static Hands instance;
     Hand[] hands;
     GUI gui = GUI.getInstance();
+    int playerCount;
 
     private Hands(int numPlayers) {
+        gui.numPlayers = numPlayers;
         hands = new Hand[numPlayers];
         for (int i = 0; i < numPlayers; i++) {
             hands[i] = new Hand();
@@ -19,9 +21,9 @@ public class Hands {
         return instance;
     }
 
-    public static Hands getInstance() {
-        return instance;
-    }
+    // public static Hands getInstance() {
+    //     getInstance(numPlayers)
+    // }
 
     public Hand getHand(int player) {
         return hands[player - 1];

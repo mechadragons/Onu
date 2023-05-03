@@ -10,10 +10,11 @@ public class GUI implements ActionListener{
     JFrame unoScreen = new JFrame("Uno");
     DeckImage deckImage = new DeckImage("cards.png");
     DeckImage cardBackImage = new DeckImage("cardBack.png");
-    Hands hands = Hands.getInstance();
+    Hands hands;
     int halfScreenWidth;
     int halfScreenHeight;
     public int currentPlayer;
+    public int numPlayers;
 
     private GUI() {
         unoScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -131,18 +132,18 @@ public class GUI implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.out.println(e.getActionCommand());
-        JButton button = (JButton) e.getSource();
+        hands = Hands.getInstance(numPlayers);
+        // System.out.println(e.getActionCommand());
+        // JButton button = (JButton) e.getSource();
         //currentPlayer = 1;
-        //Hand hand = hands.getHand(1);
-        Hand hand = hands.hands[0];
-        int index = 0;
-        for (Card card : hand.cards) {
-            if (card.button == button) {
-                hand.playCard(index);
-            }
-            index++;
-        }
-        unoScreen.repaint();
+        Hand hand = hands.getHand(1);
+        // int index = 0;
+        // for (Card card : hand.cards) {
+        //     if (card.button == button) {
+        //         hand.playCard(index);
+        //     }
+        //     index++;
+        // }
+        // unoScreen.repaint();
     }
 }

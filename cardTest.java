@@ -11,11 +11,11 @@ class CardTest {
         //test.reshuffleTest();
         //test.GUITest();
         //test.handGenerationTest();
-        test.generateHandTest();
-        test.drawDiscardTest();
-        test.drawDeckTest();
-        //test.gameStartTest();
-        test.drawPlayersTest();
+        // test.generateHandTest();
+        // test.drawDiscardTest();
+        // test.drawDeckTest();
+        test.gameStartTest();
+        //test.drawPlayersTest();
     }
 
     void createCard() {
@@ -157,7 +157,11 @@ class CardTest {
     }
 
     void gameStartTest() {
-        GameStart gameStart = new GameStart(3);
+        String[] players = {"player1", "player2", "player3", "player4", "player5", "player6", "player7", "player8"};
+        GameStart gameStart = new GameStart(players);
+        Hands hands = Hands.getInstance(players.length);
+        DeckImage deckImage = new DeckImage("cards.png");
+        hands.drawHand(1, deckImage);
     }
 
     void drawPlayersTest() {

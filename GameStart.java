@@ -1,9 +1,15 @@
 public class GameStart {
+    int numPlayers;
+    GUI gui;
     Discard discard;
     Hands hands;
 
-    GameStart(int numPlayers) {
-        discard = Discard.getInstance();
+    GameStart(String[] players) {
+        int numPlayers = players.length;
         hands = Hands.getInstance(numPlayers);
+        gui = GUI.getInstance();
+        discard = Discard.getInstance();
+        
+        gui.drawPlayers(players);
     }
 }
