@@ -32,14 +32,10 @@ public class GUI implements ActionListener{
     }
 
     void drawCard(Card card, int x, int y) {
-        JButton cardButton = new JButton();
-        cardButton.setBorder(null);
-        cardButton.setContentAreaFilled(false);
-        BufferedImage cardImage = deckImage.getImage(card);
+        JButton cardButton = card.button;
         cardButton.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
-        cardButton.addActionListener(this);
         unoScreen.getContentPane().add(cardButton);
-        cardButton.setIcon(new ImageIcon(cardImage));
+        unoScreen.validate();
     }
 
     void drawCard(int x, int y) {
@@ -116,6 +112,17 @@ public class GUI implements ActionListener{
         playerPanel.setSize(width, height);
 
         return playerPanel;
+    }
+
+    public JButton newButton(Card card) {
+        JButton cardButton = new JButton();
+        cardButton.setBorder(null);
+        cardButton.setContentAreaFilled(false);
+        BufferedImage cardImage = deckImage.getImage(card);
+        cardButton.addActionListener(this);
+        cardButton.setIcon(new ImageIcon(cardImage));
+
+        return cardButton;
     }
 
     public void actionPerformed(ActionEvent e) {
