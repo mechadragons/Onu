@@ -7,16 +7,16 @@ class Coordinates {
     final double HEIGHT = 133.6;
 
     public Coordinates(Card card) {
-        if (card.color == "wild") {
+        if (card.color.equals("wild")) {
             y = 668;
-            if (card.symbol == "wild") {
+            if (card.symbol.equals("wild")) {
                 x = 171;
             }
             else {
                 x = 342;
             }
         }
-        else if (card.symbol == "skip") {
+        else if (card.symbol.equals("skip")) {
             y = 534;
             switch (card.color) {
                 case "red":
@@ -33,43 +33,40 @@ class Coordinates {
             }
         }
         else if (card.symbol == "reverse" || card.symbol == "drawTwo") {
-            if (card.color == "blue") {
+            if (card.color.equals("blue")) {
                 y = 668;
-                switch (card.symbol) {
-                    case "reverse":
-                        x = 0;
-                        break;
-                    case "drawTwo":
-                        x = 86;
+                if (card.symbol.equals("reverse")) {
+                    x = 0;
+                }
+                else {
+                    x = 86;
                 }
             }
             else {
                 y = 534;
-                switch (card.color) {
-                    case "red":
-                        switch (card.symbol) {
-                            case "reverse":
-                                x = 86;
-                                break;
-                            case "drawTwo":
-                                x = 171;
-                        }
-                        break;
-                    case "yellow":
-                        switch (card.symbol) {
-                            case "reverse":
-                                x = 342;
-                            case "drawTwo":
-                                x = 428;
-                        }
-                    case "green":
-                        switch (card.symbol) {
-                            case "reverse":
-                                x = 599;
-                                break;
-                            case "drawTwo":
-                                x = 684;
-                        }
+                if (card.color.equals("red")) {
+                    if (card.symbol.equals("reverse")) {
+                        x = 86;
+                    }
+                    else {
+                        x = 171;
+                    }
+                }
+                else if (card.color.equals("yellow")) {
+                    if (card.symbol.equals("reverse")) {
+                        x = 342;
+                    }
+                    else {
+                        x = 428;
+                    }
+                }
+                else {
+                    if (card.symbol.equals("reverse")) {
+                        x = 599;
+                    }
+                    else {
+                        x = 684;
+                    }
                 }
             }
         }

@@ -25,8 +25,10 @@ class Hand {
         }
         else {
             System.out.println("That card does not have a matching color or symbol!");
-            System.out.println("Card: " + card.color + " " + card.symbol);
-            System.out.println("Discard: " + discard.topCard.color + " " + discard.topCard.symbol);
+            Coordinates cardCoords = new Coordinates(card);
+            Coordinates discardCoords = new Coordinates(discard.topCard);
+            System.out.println("Card: " + card.color + " " + card.symbol + " (" + cardCoords.x + ", " + cardCoords.y +")");
+            System.out.println("Discard: " + discard.topCard.color + " " + discard.topCard.symbol + " (" + discardCoords.x + ", " + discardCoords.y + ")");
         }
     }
 
