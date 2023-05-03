@@ -103,6 +103,8 @@ public class GUI implements ActionListener{
             handLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 
             unoScreen.validate();
+
+            playerNum++;
         }
     }
 

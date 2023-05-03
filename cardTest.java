@@ -132,7 +132,7 @@ class CardTest {
     }
 
     void handGenerationTest() {
-        Hands gameStart = Hands.getInstance(3);
+        Hands gameStart = Hands.getInstance(8);
         for (Hand hand : gameStart.hands) {
             System.out.println("{");
             for (Card card : hand.cards) {
@@ -143,7 +143,7 @@ class CardTest {
     }
 
     void generateHandTest() {
-        Hands hands = Hands.getInstance(3);
+        Hands hands = Hands.getInstance(8);
         DeckImage deckImage = new DeckImage("cards.png");
         hands.drawHand(1, deckImage);
     }
