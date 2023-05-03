@@ -21,10 +21,6 @@ public class Hands {
         return instance;
     }
 
-    // public static Hands getInstance() {
-    //     getInstance(numPlayers)
-    // }
-
     public Hand getHand(int player) {
         return hands[player - 1];
     }

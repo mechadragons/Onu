@@ -9,9 +9,9 @@ public class GUI implements ActionListener{
     private static GUI instance;
     JFrame unoScreen = new JFrame("Uno");
     DeckImage deckImage = new DeckImage("cards.png");
-    DeckImage cardBackImage = new DeckImage("cardBack.png");
     Hands hands;
     String[] playerArray;
+    JButton deckButton;
     int halfScreenWidth;
     int halfScreenHeight;
     public int currentPlayer;
@@ -27,6 +27,7 @@ public class GUI implements ActionListener{
         halfScreenWidth = getWidth() / 2;
         halfScreenHeight = getHeight() / 2;
         currentPlayer = -1;
+        deckButton = newButton();
     }
 
     public static GUI getInstance() { //Returns a GUI
@@ -44,11 +45,9 @@ public class GUI implements ActionListener{
     }
 
     void drawCard(int x, int y) {
-        JLabel cardLabel = new JLabel("The deck should appear here");
-        BufferedImage cardImage = deckImage.getImage();
-        cardLabel.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
-        unoScreen.getContentPane().add(cardLabel);
-        cardLabel.setIcon(new ImageIcon(cardImage));
+        deckButton.setBounds(x, y, deckImage.WIDTH, deckImage.HEIGHT);
+        unoScreen.getContentPane().add(deckButton);
+        unoScreen.repaint();
     }
 
     public int getWidth() {
@@ -137,11 +136,25 @@ public class GUI implements ActionListener{
         return cardButton;
     }
 
+    JButton newButton() {
+        JButton cardButton = new JButton();
+        cardButton.setBorder(null);
+        cardButton.setContentAreaFilled(false);
+        BufferedImage cardImage = deckImage.getImage();
+        cardButton.addActionListener(this);
+        cardButton.setIcon(new ImageIcon(cardImage));
+
+        return cardButton;
+    }
+
     public void actionPerformed(ActionEvent e) {
         hands = Hands.getInstance(numPlayers);
         JButton button = (JButton) e.getSource();
         Hand hand = hands.getHand(1);
         int index = 0;
+        if (button == deckButton) {
+            hand.draw();
+        }
         for (Card card : hand.cards) {
             if (card.button == button) {
                 hand.playCard(index);
