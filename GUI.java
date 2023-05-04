@@ -177,11 +177,15 @@ public class GUI implements ActionListener{
             if (card.button == button) {
                 boolean playable = hand.playCard(index);
                 if (playable) {
-                    if (currentPlayer < numPlayers) {
-                        currentPlayer++;
+                    nextPlayer();
+                    if (card.symbol.equals("skip")) {
+                        nextPlayer();
                     }
-                    else {
-                        currentPlayer = 1;
+                    else if (card.symbol.equals("drawTwo")) {
+                        drawCards(2);
+                    }
+                    else if (card.symbol.equals("drawFour")) {
+                        drawCards(4);
                     }
                     screen = true;
                     break;
@@ -191,6 +195,22 @@ public class GUI implements ActionListener{
         }
 
         update();
+    }
+
+    private void nextPlayer() {
+        if (currentPlayer < numPlayers) {
+            currentPlayer++;
+        }
+        else {
+            currentPlayer = 1;
+        }
+    }
+
+    private void drawCards(int numCards) {
+        Hand hand = hands.getHand(currentPlayer);
+        for (int i = 0; i < numCards; i++) {
+            hand.draw();
+        }
     }
 
     public void update() {
