@@ -13,9 +13,9 @@ public class GUI implements ActionListener{
     String[] playerArray;
     JButton deckButton;
     JButton nextTurn;
-    boolean screen;
-    boolean reversed;
-    boolean playerWon;
+    private boolean screen;
+    private boolean reversed;
+    private boolean playerWon;
     int halfScreenWidth;
     int halfScreenHeight;
     public int currentPlayer;
