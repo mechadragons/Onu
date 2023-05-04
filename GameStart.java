@@ -11,5 +11,8 @@ public class GameStart {
         discard = Discard.getInstance();
         
         gui.drawPlayers(players);
+        
+        DeckImage deckImage = new DeckImage("cards.png");
+        hands.drawHand(1, deckImage);
     }
 }

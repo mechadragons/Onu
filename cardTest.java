@@ -157,11 +157,8 @@ class CardTest {
     }
 
     void gameStartTest() {
-        String[] players = {"player1", "player2", "player3", "player4", "player5", "player6", "player7", "player8"};
+        String[] players = {"player1"};
         GameStart gameStart = new GameStart(players);
-        Hands hands = Hands.getInstance(players.length);
-        DeckImage deckImage = new DeckImage("cards.png");
-        hands.drawHand(1, deckImage);
     }
 
     void drawPlayersTest() {

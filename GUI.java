@@ -15,6 +15,7 @@ public class GUI implements ActionListener{
     JButton nextTurn;
     boolean screen;
     boolean reversed;
+    boolean playerWon;
     int halfScreenWidth;
     int halfScreenHeight;
     public int currentPlayer;
@@ -33,6 +34,7 @@ public class GUI implements ActionListener{
         deckButton = newButton();
         nextTurn = nextTurnButton();
         reversed = false;
+        playerWon = false;
     }
 
     public static GUI getInstance() { //Returns a GUI
@@ -179,6 +181,9 @@ public class GUI implements ActionListener{
             if (card.button == button) {
                 boolean playable = hand.playCard(index);
                 if (playable) {
+                    if (hand.cards.isEmpty()) {
+                        playerWon = true;
+                    }
                     if (card.symbol.equals("reverse")) {
                         reverse();
                     }
@@ -203,7 +208,10 @@ public class GUI implements ActionListener{
     }
 
     private void nextPlayer() {
-        if (reversed) {
+        if (playerWon) {
+            win();
+        }
+        else if (reversed) {
             if (currentPlayer <= 1) {
                 currentPlayer = numPlayers;
             }
@@ -238,7 +246,9 @@ public class GUI implements ActionListener{
     }
 
     public void update() {
-        if (screen) {
+        if (playerWon) {
+        }
+        else if (screen) {
             screen();
         }
         else {
@@ -252,5 +262,12 @@ public class GUI implements ActionListener{
         }
 
         unoScreen.repaint();
+    }
+
+    private void win() {
+        unoScreen.getContentPane().removeAll();
+        JLabel winMessage = new JLabel(playerArray[currentPlayer - 1] + " wins!");
+        winMessage.setBounds(halfScreenWidth - 70, halfScreenHeight - 70, 140, 140);
+        unoScreen.getContentPane().add(winMessage);
     }
 }
