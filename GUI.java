@@ -269,5 +269,6 @@ public class GUI implements ActionListener{
         JLabel winMessage = new JLabel(playerArray[currentPlayer - 1] + " wins!");
         winMessage.setBounds(halfScreenWidth - 70, halfScreenHeight - 70, 140, 140);
         unoScreen.getContentPane().add(winMessage);
+        drawPlayers();
     }
 }
