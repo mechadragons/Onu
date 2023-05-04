@@ -160,7 +160,7 @@ public class GUI implements ActionListener{
     public void screen() {
         unoScreen.getContentPane().removeAll();
         nextTurn.setBounds(0, 0, getWidth(), getHeight());
-        nextTurn.setText(currentPlayer + "'s Turn");
+        nextTurn.setText(playerArray[currentPlayer - 1] + "'s Turn");
         unoScreen.getContentPane().add(nextTurn);
     }
 
