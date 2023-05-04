@@ -13,6 +13,7 @@ public class GUI implements ActionListener{
     String[] playerArray;
     JButton deckButton;
     JButton nextTurn;
+    boolean screen;
     int halfScreenWidth;
     int halfScreenHeight;
     public int currentPlayer;
@@ -159,10 +160,12 @@ public class GUI implements ActionListener{
     public void screen() {
         unoScreen.getContentPane().removeAll();
         nextTurn.setBounds(0, 0, getWidth(), getHeight());
+        nextTurn.setText(currentPlayer + "'s Turn");
         unoScreen.getContentPane().add(nextTurn);
     }
 
     public void actionPerformed(ActionEvent e) {
+        screen = false;
         hands = Hands.getInstance(numPlayers);
         JButton button = (JButton) e.getSource();
         Hand hand = hands.getHand(currentPlayer);
@@ -180,6 +183,7 @@ public class GUI implements ActionListener{
                     else {
                         currentPlayer = 1;
                     }
+                    screen = true;
                     break;
                 }
             }
@@ -190,13 +194,19 @@ public class GUI implements ActionListener{
     }
 
     public void update() {
-        Discard discard = Discard.getInstance();
-        unoScreen.getContentPane().removeAll();
-        hands = hands.getInstance(numPlayers);
-        hands.drawHand(currentPlayer, deckImage);
-        drawDiscard(discard.topCard);
-        drawDeck();
-        drawPlayers();
+        if (screen) {
+            screen();
+        }
+        else {
+            Discard discard = Discard.getInstance();
+            unoScreen.getContentPane().removeAll();
+            hands = hands.getInstance(numPlayers);
+            hands.drawHand(currentPlayer, deckImage);
+            drawDiscard(discard.topCard);
+            drawDeck();
+            drawPlayers();
+        }
+
         unoScreen.repaint();
     }
 }
