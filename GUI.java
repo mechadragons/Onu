@@ -14,6 +14,7 @@ public class GUI implements ActionListener{
     JButton deckButton;
     JButton nextTurn;
     boolean screen;
+    boolean reversed;
     int halfScreenWidth;
     int halfScreenHeight;
     public int currentPlayer;
@@ -31,6 +32,7 @@ public class GUI implements ActionListener{
         currentPlayer = 1;
         deckButton = newButton();
         nextTurn = nextTurnButton();
+        reversed = false;
     }
 
     public static GUI getInstance() { //Returns a GUI
@@ -177,6 +179,9 @@ public class GUI implements ActionListener{
             if (card.button == button) {
                 boolean playable = hand.playCard(index);
                 if (playable) {
+                    if (card.symbol.equals("reverse")) {
+                        reverse();
+                    }
                     nextPlayer();
                     if (card.symbol.equals("skip")) {
                         nextPlayer();
@@ -198,11 +203,21 @@ public class GUI implements ActionListener{
     }
 
     private void nextPlayer() {
-        if (currentPlayer < numPlayers) {
-            currentPlayer++;
+        if (reversed) {
+            if (currentPlayer <= 1) {
+                currentPlayer = numPlayers;
+            }
+            else {
+                currentPlayer--;
+            }
         }
         else {
-            currentPlayer = 1;
+            if (currentPlayer < numPlayers) {
+                currentPlayer++;
+            }
+            else {
+                currentPlayer = 1;
+            }
         }
     }
 
@@ -210,6 +225,15 @@ public class GUI implements ActionListener{
         Hand hand = hands.getHand(currentPlayer);
         for (int i = 0; i < numCards; i++) {
             hand.draw();
+        }
+    }
+
+    private void reverse() {
+        if (reversed) {
+            reversed = false;
+        }
+        else {
+            reversed = true;
         }
     }
 
