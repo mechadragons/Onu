@@ -113,10 +113,7 @@ public class UnoMenu extends JFrame {
         if (playerCount < 2) {
             JOptionPane.showMessageDialog(this, "At least 2 players are required to start the game.");
         } else {
-            // Start the Uno game with the provided player names
-            // UnoGame unoGame = new UnoGame(playerNames);
-            // unoGame.start();
-            // dispose(); // Close the menu
+            GameStart gameStart = new GameStart(playerNames); // Start the Uno game with the provided player names
         }
     }
 
