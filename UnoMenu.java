@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class UnoMenu extends JFrame {
     private JButton startButton;
@@ -81,7 +82,7 @@ public class UnoMenu extends JFrame {
             nameFields[i] = new JTextField(20);
             playerPanel.add(nameFields[i]);
         }
-
+        
         // Create the start button
         JButton startButton = new JButton("Start Game");
         startButton.addActionListener(new ActionListener() {
@@ -92,53 +93,38 @@ public class UnoMenu extends JFrame {
             }
         });
         playerPanel.add(startButton);
-
+        
         mainMenu.getContentPane().add(playerPanel);
         mainMenu.setSize(300, 400);
         mainMenu.setLocationRelativeTo(null);
         mainMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainMenu.setVisible(true);
-
-        titleScreen.dispose(); // Close the title screen
+        
+        titleScreen.dispose(); // Close the title screen        
     }
 
     private void startGame() {
         // Get the player names
-        String[] playerNames = new String[nameFields.length];
-        for (int i = 0; i < nameFields.length; i++) {
-            playerNames[i] = nameFields[i].getText().trim();
-        }
-
-        // Validate the player names
-        int playerCount = 0;
-        for (String name : playerNames) {
+        ArrayList<String> playerNameList = new ArrayList<>();
+        for (JTextField nameField : nameFields) {
+            String name = nameField.getText().trim();
             if (!name.isEmpty()) {
-                playerCount++;
+                playerNameList.add(name);
             }
         }
-
+    
+        // Convert the list to an array
+        String[] playerNames = playerNameList.toArray(new String[playerNameList.size()]);
+    
+        // Validate the player names
+        int playerCount = playerNames.length;
         if (playerCount < 2) {
             JOptionPane.showMessageDialog(this, "At least 2 players are required to start the game.");
         } else {
             // Start the Uno game with the provided player names
-            // GameStart newGame = new GameStart(playerNames);
+            GameStart newGame = new GameStart(playerNames);
         }
-    }
-    private int getNumberOfPlayers() {
-        String input = JOptionPane.showInputDialog(this, "Enter the number of players:");
-        try {
-            int numOfPlayers = Integer.parseInt(input);
-            if (numOfPlayers >= 2 && numOfPlayers <= 8) {
-                return numOfPlayers;
-            } else {
-                JOptionPane.showMessageDialog(this, "Number of players must be between 2 and 8.");
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Invalid input. Please enter a number.");
-        }
-        return 0;
-    }
-
+    }    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
