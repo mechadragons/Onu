@@ -104,8 +104,8 @@ public class UnoMenu extends JFrame {
 
     private void startGame() {
         // Get the player names
-        String[] playerNames = new String[8];
-        for (int i = 0; i < 8; i++) {
+        String[] playerNames = new String[nameFields.length];
+        for (int i = 0; i < nameFields.length; i++) {
             playerNames[i] = nameFields[i].getText().trim();
         }
 
@@ -121,9 +121,24 @@ public class UnoMenu extends JFrame {
             JOptionPane.showMessageDialog(this, "At least 2 players are required to start the game.");
         } else {
             // Start the Uno game with the provided player names
-            GameStart newGame = new GameStart(playerNames);
+            // GameStart newGame = new GameStart(playerNames);
         }
     }
+    private int getNumberOfPlayers() {
+        String input = JOptionPane.showInputDialog(this, "Enter the number of players:");
+        try {
+            int numOfPlayers = Integer.parseInt(input);
+            if (numOfPlayers >= 2 && numOfPlayers <= 8) {
+                return numOfPlayers;
+            } else {
+                JOptionPane.showMessageDialog(this, "Number of players must be between 2 and 8.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid input. Please enter a number.");
+        }
+        return 0;
+    }
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
