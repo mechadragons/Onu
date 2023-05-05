@@ -7,6 +7,7 @@ public class UnoMenu extends JFrame {
     private JButton startButton;
     private JButton rulesButton;
     private JFrame titleScreen;
+    private JTextField[] nameFields; // Declare the nameFields array as an instance variable
 
     public UnoMenu() {
         super("Uno Game Menu");
@@ -63,7 +64,7 @@ public class UnoMenu extends JFrame {
         JLabel label = new JLabel("Enter player names:");
         playerPanel.add(label);
 
-        JTextField[] nameFields = new JTextField[8];
+        nameFields = new JTextField[8]; // Use the instance variable
         for (int i = 0; i < 8; i++) {
             nameFields[i] = new JTextField(20);
             playerPanel.add(nameFields[i]);
@@ -91,12 +92,6 @@ public class UnoMenu extends JFrame {
 
     private void startGame() {
         // Get the player names
-        JFrame mainMenu = new JFrame("Uno Game Menu");
-        JTextField[] nameFields = new JTextField[8];
-        for (int i = 0; i < 8; i++) {
-            nameFields[i] = new JTextField(20);
-        }
-
         String[] playerNames = new String[8];
         for (int i = 0; i < 8; i++) {
             playerNames[i] = nameFields[i].getText().trim();
@@ -113,7 +108,9 @@ public class UnoMenu extends JFrame {
         if (playerCount < 2) {
             JOptionPane.showMessageDialog(this, "At least 2 players are required to start the game.");
         } else {
-            GameStart gameStart = new GameStart(playerNames); // Start the Uno game with the provided player names
+            // Start the Uno game with the provided player names
+            // GameStart newGame = new GameStart(playerNames);
+            dispose(); // Close the menu
         }
     }
 
@@ -128,4 +125,3 @@ public class UnoMenu extends JFrame {
         });
     }
 }
-
